@@ -1,0 +1,51 @@
+<!-- src/app/dynamic-table/dynamic-table.component.html -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableData; let i = index">
+      <td>{{ row.id }}</td>
+      <td>
+        <ng-container *ngIf="editingRow !== i; else editRowTemplate">
+          {{ row.name }}
+        </ng-container>
+        <ng-template #editRowTemplate>
+          <input [(ngModel)]="row.name" />
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="editingRow !== i; else editRowTemplate">
+          {{ row.age }}
+        </ng-container>
+        <ng-template #editRowTemplate>
+          <input type="number" [(ngModel)]="row.age" />
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="editingRow !== i; else editActionsTemplate">
+          <button (click)="editRow(i)" class="edit-icon"></button>
+          <button (click)="deleteRow(i)" class="delete-icon"></button>
+        </ng-container>
+        <ng-template #editActionsTemplate>
+          <button (click)="saveRow(i)" class="save-icon"></button>
+          <button (click)="cancelEdit()" class="cancel-icon"></button>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add new row form -->
+<div>
+  <label>Name: </label>
+  <input [(ngModel)]="newRow.name" />
+  <label>Age: </label>
+  <input type="number" [(ngModel)]="newRow.age" />
+  <button (click)="addRow()">Add Row</button>
+</div>

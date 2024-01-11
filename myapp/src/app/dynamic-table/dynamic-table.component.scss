@@ -1,0 +1,67 @@
+// src/app/dynamic-table/dynamic-table.component.scss
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #e5e5e5;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4caf50;
+  }
+
+  .edit-icon::before {
+    content: "\270E"; /* Unicode character for pencil */
+  }
+
+  .delete-icon::before {
+    content: "\2796"; /* Unicode character for heavy minus sign */
+  }
+
+  .save-icon::before {
+    content: "\2714"; /* Unicode character for heavy check mark */
+  }
+
+  .cancel-icon::before {
+    content: "\2716"; /* Unicode character for heavy multiplication x */
+  }
+}
